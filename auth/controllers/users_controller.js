@@ -60,25 +60,47 @@ exports.getUserProfile = function(req, res) {
     if (!user){
       res.json(404, {err: 'User Not Found.'});
     } else {
+      console.log("user_images: ", user.user_images);
       res.json(user);
     }
   });
 };
 exports.updateUser = function(req, res){
-  User.findOne({ _id: req.session.user })
-  .exec(function(err, user) {
-    user.set('email', req.body.email);
-    user.set('color', req.body.color);
-    user.save(function(err) {
-      if (err){
-        res.sessor.error = err;
-      } else {
-        req.session.msg = 'User Updated.';
-        req.session.color = req.body.color;
+  var imageObj = {
+      title: "",
+      subtitle: "",
+      imageURL: ""
+    };
+  imageObj.title = req.body.title;
+  imageObj.subtitle = req.body.subtitle;
+  imageObj.imageURL = req.body.imageURL;
+  
+  // User.findOne({ _id: req.session.user })
+  // .exec(function(err, user) {
+    User.update({ _id: req.session.user }, {$push: { user_images: imageObj}}, function(err, updatedUser){
+      if(err) console.log(err);
+      else {
+        // console.log("updated user:", updatedUser);
+        // res.json(updatedUser); 
+         res.redirect('/user');
       }
-      res.redirect('/user');
     });
-  });
+      // user.save(function(err) {
+      // if (err){
+      //   res.sessor.error = err;
+      // } else {
+      //   req.session.msg = 'New Poster Added.';
+      //   console.log("user AFTER: ", user);
+      // }
+      // res.redirect('/user');
+    // });
+  // });
+    
+  //   // console.log("existingArray: ", existingArray);
+  //   // var newArray = existingArray.push(imageObj);
+  //   // console.log("newArray: ", newArray);
+  //   user.set( { $push: { user_images: { $each: [ 90, 92, 85 ] } } });
+  
 };
 exports.deleteUser = function(req, res){
   User.findOne({ _id: req.session.user })

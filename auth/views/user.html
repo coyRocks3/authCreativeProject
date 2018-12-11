@@ -8,20 +8,20 @@
         
 <body>  
     <div class="form-container" ng-controller="myController">
-        <p id="sectionTitle" class="form-header">User Profile</p>
+        <p id="sectionTitle" class="form-header">Make New Demotivational Poster</p>
         <form method="POST" action="/user/update">
-            <label>Username:</label>
-            <input type="text" id="username" name="username" ng-model="user.username" disabled><br>
-            <label>Email:</label>
-            <input type="email" id="email" name="email" ng-model="user.email"><br>          
-            <label>Favorite Color:</label>
-            <input type="text" id="color" name="color" ng-model="user.color"><br>   
-            <input type="submit" id="save" value="Save">
+            <label>Title:</label>
+            <input type="text" id="title" name="title"><br>
+            <label>Subtitle:</label>
+            <input type="text" id="subtitle" name="subtitle"><br>          
+            <label>URL:</label>
+            <input type="text" id="imageURL" name="imageURL"><br>   
+            <input type="submit" id="save" value="Add">
         </form>
     </div>
-    <form method="POST" action="/user/delete">
-        <input type="submit" id="delete" value="Delete User">
-    </form>
+    <!--<form method="POST" action="/user/delete">-->
+    <!--    <input type="submit" id="delete" value="Delete User">-->
+    <!--</form>-->
     <hr>
     <span id="userMsg">
     <%= msg %>
