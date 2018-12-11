@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app="myApp"> 
+    
+<head>
+    <title>User Login and Sessions</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+</head>
+        
+<body>  
+    <div ng-controller="myController">
+        <h2 id="welcomeText">WELCOMEEEEEEE. You are Logged In as
+            <%= username %>
+        </h2>
+        <a id="logoutLink" href="/logout">logout</a>
+        <a id="editLink" href="/user">Edit User</a>
+        <p>Code: <a href="https://github.com/BYUCS260F2017/lab-6-authentication-ileana-heaton">https://github.com/BYUCS260F2017/lab-6-authentication-ileana-heaton</a>
+            <p>
+    </div>
+    <hr>
+    <span id="indexMsg">
+        <%= msg %>
+    </span>
+    <hr>
+    <span id="colorText">
+    Color
+        <%= color %>
+      </span>
+    <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+    <script src="/javascripts/my_app.js"></script>
+</body>
+      
+</html>
