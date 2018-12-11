@@ -9,15 +9,18 @@ router.get('/', function(req, res){
 //    console.log(req);
     console.log(req.session);
     if (req.session.user) {
-      console.log("/ Route if user");
+      console.log("/ Route if user (logged in)");
       res.render('index', {username: req.session.username,
-                           msg:req.session.msg,
-                           color:req.session.color});
+                          msg:req.session.msg });
+                          // color:req.session.color});
+                          
+      // res.redirect('/');
     } else {
-      console.log("/ Route else user");
+      console.log("/ Route else user (not logged in)");
       req.session.msg = 'Access denied!';
       res.redirect('/login');
     }
+    console.log("FIRST GET WORKED");
 });
 router.get('/user', function(req, res){
     console.log("/user Route");

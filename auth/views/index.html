@@ -8,21 +8,29 @@
         
 <body>  
     <div ng-controller="myController">
-        <h2 id="welcomeText">Welcome, <%= username %>! </h2>
+        <h2 id="welcomeText">Welcome, {{user.username}} </h2>
         <a id="logoutLink" href="/logout">Log Out</a>
-        <a id="editLink" href="/user">Edit User</a>
-        <!--<p>Code: <a href="https://github.com/BYUCS260F2017/lab-6-authentication-ileana-heaton">https://github.com/BYUCS260F2017/lab-6-authentication-ileana-heaton</a>-->
-        <!--    <p>-->
+        <h2 id="welcomeText">You are here. Good. <br>
+        You are logged in as "{{user.username}}"
+        </h2>
+        <a id="editLink" href="/user">Make New Demotivational Poster</a>
+            <p>
+  
+       <div ng-repeat="poster in user_images">
+           <center>
+               <div style="width: 1000px; color: white; background-color: black; margin: 30px;">
+                   <center>
+                       <img ng-src="{{poster.imageURL}}" style="max-width: 900px; max-height: 900px; padding: 10px; border: 3px solid white;"></img>
+                       <h1><u>{{poster.title}}</u></h1>
+                       <h4>{{poster.subtitle}}</h4>
+                   </center>
+               </div>    
+           </center>
+           <br>
+       </div> 
+       
     </div>
-    <hr>
-    <span id="indexMsg">
-        <%= msg %>
-    </span>
-    <hr>
-    <span id="colorText">
-    Color
-        <%= color %>
-      </span>
+   
     <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
     <script src="/javascripts/my_app.js"></script>
 </body>
